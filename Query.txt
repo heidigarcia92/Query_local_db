@@ -1,3 +1,12 @@
+CREATE TABLE [dbo].[__EFMigrationsHistory] (
+    [MigrationId]    NVARCHAR (150) NOT NULL,
+    [ProductVersion] NVARCHAR (32)  NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED ([MigrationId] ASC)
+);
+
+
+
+
 CREATE TABLE [dbo].[AspNetRoleClaims] (
     [Id]         INT            IDENTITY (1, 1) NOT NULL,
     [RoleId]     NVARCHAR (450) NOT NULL,
@@ -11,6 +20,9 @@ CREATE TABLE [dbo].[AspNetRoleClaims] (
 GO
 CREATE NONCLUSTERED INDEX [IX_AspNetRoleClaims_RoleId]
     ON [dbo].[AspNetRoleClaims]([RoleId] ASC);
+    
+    
+    
 
 
 CREATE TABLE [dbo].[AspNetRoles] (
@@ -25,6 +37,10 @@ CREATE TABLE [dbo].[AspNetRoles] (
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [RoleNameIndex]
     ON [dbo].[AspNetRoles]([NormalizedName] ASC) WHERE ([NormalizedName] IS NOT NULL);
+    
+    
+    
+    
 
 CREATE TABLE [dbo].[AspNetUserClaims] (
     [Id]         INT            IDENTITY (1, 1) NOT NULL,
@@ -39,6 +55,11 @@ CREATE TABLE [dbo].[AspNetUserClaims] (
 GO
 CREATE NONCLUSTERED INDEX [IX_AspNetUserClaims_UserId]
     ON [dbo].[AspNetUserClaims]([UserId] ASC);
+    
+    
+    
+    
+    
 
 CREATE TABLE [dbo].[AspNetUserLogins] (
     [LoginProvider]       NVARCHAR (128) NOT NULL,
@@ -53,6 +74,11 @@ CREATE TABLE [dbo].[AspNetUserLogins] (
 GO
 CREATE NONCLUSTERED INDEX [IX_AspNetUserLogins_UserId]
     ON [dbo].[AspNetUserLogins]([UserId] ASC);
+    
+    
+    
+    
+    
 
 CREATE TABLE [dbo].[AspNetUserRoles] (
     [UserId] NVARCHAR (450) NOT NULL,
@@ -66,6 +92,9 @@ CREATE TABLE [dbo].[AspNetUserRoles] (
 GO
 CREATE NONCLUSTERED INDEX [IX_AspNetUserRoles_RoleId]
     ON [dbo].[AspNetUserRoles]([RoleId] ASC);
+    
+    
+    
 
 
 CREATE TABLE [dbo].[AspNetUsers] (
@@ -96,6 +125,10 @@ CREATE NONCLUSTERED INDEX [EmailIndex]
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [UserNameIndex]
     ON [dbo].[AspNetUsers]([NormalizedUserName] ASC) WHERE ([NormalizedUserName] IS NOT NULL);
+    
+    
+    
+    
 
 
 CREATE TABLE [dbo].[AspNetUserTokens] (
@@ -105,6 +138,9 @@ CREATE TABLE [dbo].[AspNetUserTokens] (
     [Value]         NVARCHAR (MAX) NULL,
     CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY CLUSTERED ([UserId] ASC, [LoginProvider] ASC, [Name] ASC),
     CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
+    
+    
+    
 
 CREATE TABLE [dbo].[Authorizations] (
     [UserId] VARCHAR (450) NOT NULL,
@@ -112,6 +148,10 @@ CREATE TABLE [dbo].[Authorizations] (
     [PageId] INT           NOT NULL,
     PRIMARY KEY NONCLUSTERED ([UserId] ASC, [RoleId] ASC, [PageId] ASC)
 );
+
+
+
+
 
 
 CREATE TABLE [dbo].[Authorizations2] (
@@ -122,12 +162,17 @@ CREATE TABLE [dbo].[Authorizations2] (
 );
 
 
+
+
+
 CREATE TABLE [dbo].[MultilingualTable] (
     [Key]      VARCHAR (450) NOT NULL,
     [Value]    VARCHAR (450) NOT NULL,
     [Language] VARCHAR (450) NOT NULL,
     PRIMARY KEY CLUSTERED ([Key] ASC, [Language] ASC)
 );
+
+
 
 
 CREATE TABLE [dbo].[PageUrls] (
